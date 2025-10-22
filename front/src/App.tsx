@@ -6,7 +6,6 @@ import ThemeManager from "@/components/common/ThemeManager.tsx";
 import LoadingSpinner from "@/components/loadingSpiner/LoadingSpinner.tsx";
 import Footer from "@/components/common/Footer.tsx";
 import AppRoutes from "@/config/AppRouters.tsx";
-import AnimatedBackground from "@/components/common/AnimatedBackground.tsx";
 
 const queryClient = new QueryClient({
     defaultOptions: {
