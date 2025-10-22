@@ -1,8 +1,9 @@
 // src/screens/info/FAQPage.tsx
 
 import React from 'react';
-import Header from '@/components/common/Header';
 import { useTranslation } from 'react-i18next';
+import AnimatedBackground from "@/components/common/AnimatedBackground.tsx";
+import Header from "@/components/common/Header.tsx";
 
 const base = import.meta.env.BASE_URL || '/';
 
@@ -49,8 +50,9 @@ const FAQPage: React.FC = () => {
 
     return (
         <div className="min-h-screen font-sans bg-background text-text">
-            <Header />
-            <main className="container mx-auto p-4 md:p-8">
+            <Header/>
+            <AnimatedBackground/>
+            <main className="container mx-auto p-4 md:p-8 relative z-10 flex-grow">
                 <h1 className="text-3xl md:text-4xl font-extrabold text-center my-8 text-text">
                     {t('faq_title')}
                 </h1>
