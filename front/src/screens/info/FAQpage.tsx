@@ -1,8 +1,10 @@
+// src/screens/info/FAQPage.tsx
 
 import React from 'react';
 import Header from '@/components/common/Header';
 import { useTranslation } from 'react-i18next';
-import AnimatedBackground from "@/components/common/AnimatedBackground.tsx";
+
+const base = import.meta.env.BASE_URL || '/';
 
 interface FAQContent {
     questionKey: string;
@@ -34,7 +36,7 @@ const faqStructure: FAQCategory[] = [
             {
                 questionKey: "q_how_is_circulating_supply_calculated_cg",
                 answerKey: "a_how_is_circulating_supply_calculated_cg",
-                imageUrls: ["/img/faq/faq1.jpg", "/img/faq/faq2.jpg"],
+                imageUrls: ["img/faq/faq1.jpg", "img/faq/faq2.jpg"],
                 imageAltKeys: ["img_alt_circulating_supply_sol", "img_alt_circulating_supply_matic"]
             },
             { questionKey: "q_how_often_updated", answerKey: "a_how_often_updated" },
@@ -48,8 +50,7 @@ const FAQPage: React.FC = () => {
     return (
         <div className="min-h-screen font-sans bg-background text-text">
             <Header />
-            <AnimatedBackground/>
-            <main className="container mx-auto p-4 md:p-8 relative z-10 flex-grow">
+            <main className="container mx-auto p-4 md:p-8">
                 <h1 className="text-3xl md:text-4xl font-extrabold text-center my-8 text-text">
                     {t('faq_title')}
                 </h1>
@@ -74,9 +75,9 @@ const FAQPage: React.FC = () => {
                                                     {item.imageUrls.map((url, imgIndex) => (
                                                         <img
                                                             key={imgIndex}
-                                                            src={url}
+                                                            src={`${base}${url}`}
                                                             alt={item.imageAltKeys?.[imgIndex] ? t(item.imageAltKeys[imgIndex]) : 'FAQ Image'}
-                                                            className="max-w-full h-auto   "
+                                                            className="max-w-full h-auto rounded border border-border"
                                                         />
                                                     ))}
                                                 </div>
