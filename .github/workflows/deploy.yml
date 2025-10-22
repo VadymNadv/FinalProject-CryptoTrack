@@ -1,0 +1,53 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  # Запускати при push у гілку main/master
+  push:
+    branches: ["main", "master"] # Заміни на свою основну гілку
+  # Дозволяє запускати вручну з вкладки Actions
+  workflow_dispatch:
+
+# Дозволи для GITHUB_TOKEN для розгортання на GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Дозволити лише одне одночасне розгортання, скасовуючи попередні
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./front # <-- ВКАЖИ ПРАВИЛЬНИЙ ШЛЯХ ДО ТВОЄЇ ПАПКИ FRONTEND
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Вкажи версію Node.js, яку використовуєш
+          cache: 'npm'
+          cache-dependency-path: './front/package-lock.json' # <-- ШЛЯХ ДО LOCK-ФАЙЛУ
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        # Переконайся, що vite.config.ts налаштований з правильним 'base'
+        run: npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Завантажити з папки /dist всередині ./front
+          path: './front/dist' # <-- ШЛЯХ ДО ПАПКИ DIST
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
