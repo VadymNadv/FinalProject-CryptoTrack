@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import ThemeManager from "@/components/common/ThemeManager.tsx";
 import LoadingSpinner from "@/components/loadingSpiner/LoadingSpinner.tsx";
 import Footer from "@/components/common/Footer.tsx";
@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
+            <HashRouter>
                 <ThemeManager />
                 <div className="flex flex-col min-h-screen font-sans">
                     <div className="relative z-10 flex flex-col flex-grow">
@@ -37,7 +37,7 @@ function App() {
                         <Footer />
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         </QueryClientProvider>
     );
 }
