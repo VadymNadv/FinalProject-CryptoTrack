@@ -4,13 +4,14 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Header from '@/components/common/Header';
 import LoadingSpinner from '@/components/loadingSpiner/LoadingSpinner';
 import { useCryptoListQuery } from '@/hooks/useCryptoQueries';
-import { getPortfolio, removeCoinFromPortfolio, updateNoteForCoin, type PortfolioItem } from '@/utils/portfolioStorage';
+import { getPortfolio, removeCoinFromPortfolio, updateNoteForCoin } from '@/utils/portfolioStorage';
 import { useTranslation } from 'react-i18next';
 import { Trash2 } from 'lucide-react';
-import type {CoinMarket} from '@/services/coingecko.service';
 import SparklineChart from '@/components/crypto/SparklineChart';
 import { useNavigate } from 'react-router-dom';
 import AnimatedBackground from "@/components/common/AnimatedBackground.tsx";
+import type {PortfolioItem} from "@/types/portfolio.ts";
+import type {CoinMarket} from "@/types/crypto.ts";
 
 const formatCurrency = (value: number | undefined | null): string => {
     if (typeof value !== 'number') return 'N/A';

@@ -8,7 +8,7 @@ import LoadingSpinner from "@/components/loadingSpiner/LoadingSpinner.tsx";
 import SparklineChart from "./SparklineChart";
 import { getPortfolio, addCoinToPortfolio, removeCoinFromPortfolio } from '@/utils/portfolioStorage';
 import { Star } from 'lucide-react';
-import type {CoinMarket} from '@/services/coingecko.service';
+import type {CoinMarket} from "@/types/crypto.ts";
 
 const formatCurrency = (value: number) => {
     return value.toLocaleString('en-US', {
@@ -41,7 +41,7 @@ const formatPercentage = (value?: number) => {
         </span>
     );
 };
-// ---
+
 
 const CryptoList = () => {
     const { data, isLoading, isError, error } = useCryptoListQuery();
@@ -64,13 +64,13 @@ const CryptoList = () => {
         if (isInPortfolio) {
             removeCoinFromPortfolio(coin.id);
         } else {
-            // Додаємо тільки необхідні дані
+
             addCoinToPortfolio({
                 id: coin.id,
                 name: coin.name,
                 symbol: coin.symbol,
                 image: coin.image
-                // Нотатка додається порожньою за замовчуванням
+
             });
         }
         refreshPortfolioIds();

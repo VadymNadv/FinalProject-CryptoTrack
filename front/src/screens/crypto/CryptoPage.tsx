@@ -10,12 +10,8 @@ import CommentForm from "./components/CommentForm.tsx";
 import CommentList from "./components/CommentList.tsx";
 import { useTranslation } from 'react-i18next';
 import DetailRow from "@/screens/crypto/components/DetailRow.tsx";
+import type {CommentType} from "@/types/comments.ts";
 
-export interface CommentType {
-    username: string;
-    comment: string;
-    timestamp: number;
-}
 
 
 // Для великих  сум

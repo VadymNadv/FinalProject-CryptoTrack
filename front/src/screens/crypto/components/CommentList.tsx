@@ -1,8 +1,8 @@
 
 import React from 'react';
 
-import type {CommentType} from '@/screens/crypto/CryptoPage.tsx';
 import { useTranslation } from 'react-i18next';
+import type {CommentType} from "@/types/comments.ts";
 
 interface CommentListProps {
     comments: CommentType[];

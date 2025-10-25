@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useTranslation } from 'react-i18next';
+import type {CommentType} from "@/types/comments.ts";
 
-import type {CommentType} from '@/screens/crypto/CryptoPage.tsx';
 
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type

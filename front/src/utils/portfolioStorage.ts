@@ -1,11 +1,5 @@
+import type {PortfolioItem} from "@/types/portfolio.ts";
 
-export interface PortfolioItem {
-    id: string;
-    name: string;
-    symbol: string;
-    image: string;
-    note?: string;
-}
 
 const STORAGE_KEY = 'crypto_portfolio';
 
